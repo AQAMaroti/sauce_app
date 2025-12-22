@@ -106,8 +106,8 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber7-jvm</artifactId>
             <version>2.29.0</version>
-            <scope>test</scope>
         </dependency>
+
     </dependencies>
     <build>
         <plugins>
@@ -135,8 +135,24 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <systemPropertyVariables>
+                        <allure.results.directory>
+                            reports/allure-results
+                        </allure.results.directory>
+                    </systemPropertyVariables>
+
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.12.0</version>
+                <configuration>
+                    <resultsDirectory>${project.basedir}/reports/allure-results</resultsDirectory>
+                    <reportDirectory>${project.basedir}/reports/allure-report</reportDirectory>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 
