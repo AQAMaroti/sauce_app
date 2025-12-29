@@ -21,22 +21,7 @@ public class ProductStep {
         this.products = new Products(driver);
     }
 
-    @Then("user add to cart")
-    public void addProductToCart(DataTable dataTable) throws InterruptedException {
-        List<Map<String, String>> rows = dataTable.asMaps(String.class, String.class);
 
-        for (Map<String, String> row : rows) {
-            String product = row.get("product");
-
-            if (product == null || product.trim().isEmpty()) {
-                throw new IllegalArgumentException("Missing 'product' value in DataTable row: " + row);
-            }
-
-            products.addItemsToCart(product);
-            Thread.sleep(3000);
-        }
-
-    }
     @Then("the user navigates to the cart")
     public void the_user_navigates_to_the_cart() {
        products.goToCart();

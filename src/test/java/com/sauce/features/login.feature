@@ -2,13 +2,10 @@
 Feature: Sauce Lab Application
 
   Scenario Outline: Successful login to Swag Labs
-    When the user logs in with username "<username>" and password "<password>"
+    Given user read data from excel sheet "testData" sheet "users" for test "<TC_NO>"
+    When the user logs in with username and password
     Then the dashboard title should be "Swag Labs"
     * user add to cart
-      | product    |
-      | backpack   |
-      | bike-light |
-      | t-shirt    |
     * the user navigates to the cart
     * the user proceeds to checkout
     * the user enters checkout details with "John" "Doe" "560001"
@@ -16,8 +13,9 @@ Feature: Sauce Lab Application
     * the user completes the checkout
     * the order should be placed successfully
     Examples:
-      | username      | password     |
-      | standard_user | secret_sauce |
-      | standard_user | secret_sauce |
-      | standard_user | secret_sauce |
-      | standard_user | secret_sauce |
+      | TC_NO  |
+      | TC_001 |
+      | TC_002 |
+      | TC_003 |
+      | TC_004 |
+      | TC_005 |
